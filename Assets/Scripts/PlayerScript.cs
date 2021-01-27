@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
-    public GameObject Bcell;
+    public GameObject Neutrophils;
     public GameObject Macrophage;
     float rotation_speed = 0; // 回転速度
     public float limit = 0;          //出現限界
@@ -43,6 +43,22 @@ public class PlayerScript : MonoBehaviour
 
                     limit += 1;
                 }
+            }
+            if (Input.GetKeyUp(KeyCode.B))
+            {
+                if (limit < 5)
+                {
+                    Instantiate(
+                        Neutrophils,
+                        transform.position,
+                        transform.rotation
+                    );
+
+                    limit += 1;
+                }
+                
+
+                
             }
         }
         Quaternion target = Quaternion.Euler(0, 0, tiltAroundZ);
