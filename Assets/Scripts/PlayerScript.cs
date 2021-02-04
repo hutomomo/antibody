@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject Neutrophils;
     public GameObject Macrophage;
     float rotation_speed = 0; // 回転速度
-    public float limit = 0;          //出現限界
+    public float limit =5;          //出現限界
     float tiltAngle = 60.0f;
     float smooth = 5.0f;
     void Start()
@@ -33,7 +33,7 @@ public class PlayerScript : MonoBehaviour
             if (Input.GetKeyUp("space"))
             {
                
-                if(limit < 5)
+                if(limit  > 0)
                 {
                     Instantiate(
                         Macrophage,
@@ -41,12 +41,12 @@ public class PlayerScript : MonoBehaviour
                         transform.rotation
                     );
 
-                    limit += 1;
+                    limit -= 1;
                 }
             }
             if (Input.GetKeyUp(KeyCode.B))
             {
-                if (limit < 5)
+                if (limit > 0)
                 {
                     Instantiate(
                         Neutrophils,
@@ -54,7 +54,7 @@ public class PlayerScript : MonoBehaviour
                         transform.rotation
                     );
 
-                    limit += 1;
+                    limit -= 1;
                 }
                 
 

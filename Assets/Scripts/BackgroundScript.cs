@@ -15,10 +15,10 @@ public class BackgroundScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position -= new Vector3(0, Time.deltaTime * speed);
-        if (transform.position.y <= -10f)
+        transform.position -= new Vector3(0, Time.deltaTime * speed);       //ゆっくり下に流れる
+        if (transform.position.y <= -10f)                                   //y座標が－10f以下ならば
         {
-            transform.position = new Vector2(0, 10f);
+            transform.position = new Vector2(0, 10f);                       //移動させる
         }
     }
 }

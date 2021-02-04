@@ -13,7 +13,26 @@ public class StartScript : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
+    private IEnumerator WaitCommand()
+    {
 
+        audioSource.PlayOneShot(sound1);
+
+        while (true)
+        {
+
+            yield return new WaitForFixedUpdate();
+
+            if (!audioSource.isPlaying)
+            {
+                Debug.Log("コルーチン終了");
+                SceneManager.LoadScene("MainScene");
+                break;
+            }
+
+        }
+
+    }
     // Update is called once per frame
     void Update()
     {
@@ -21,8 +40,9 @@ public class StartScript : MonoBehaviour
     }
     public void OnClickStartButton()
     {
-        //audioSource.PlayOneShot(sound1, 0.7F);
-        SceneManager.LoadScene("MainScene");
+        //audioSource.PlayOneShot(sound1);
+        StartCoroutine(WaitCommand());
+        //SceneManager.LoadScene("MainScene");
     }
     public void OnClickGameOverButton()
     {

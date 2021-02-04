@@ -6,7 +6,6 @@ public class macroscript : MonoBehaviour
 {
     private GameObject nearObj;         //最も近いオブジェクト
     private GameControllerScript gameController;
-    private float searchTime = 0;    //経過時間
     private bool eat = false;
     public Vector2 speed = new Vector2(0.05f, 0.05f);
     private float rad = 0;
@@ -31,8 +30,8 @@ public class macroscript : MonoBehaviour
             nearObj.transform.position.y - transform.position.y,
             nearObj.transform.position.x - transform.position.x);
         Position = transform.position;
-        Position.x += speed.x * Mathf.Cos(rad)*0.1f;
-        Position.y += speed.y * Mathf.Sin(rad)*0.1f;
+        Position.x += speed.x * Mathf.Cos(rad) * Time.deltaTime * 50;
+        Position.y += speed.y * Mathf.Sin(rad) * Time.deltaTime * 50;
         transform.position = Position;
     }
     void FixedUpdate() {
@@ -54,7 +53,7 @@ public class macroscript : MonoBehaviour
             {
                 gameController.AddScore(10);
                 Destroy(gameObject);                                               //このオブジェクトを消す
-                script.limit -= 1;
+                script.limit += 1;
             }
         }
         else {
