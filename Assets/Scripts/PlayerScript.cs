@@ -44,7 +44,7 @@ public class PlayerScript : MonoBehaviour
                     limit -= 1;
                 }
             }
-            if (Input.GetKeyUp(KeyCode.B))
+            /*if (Input.GetKeyUp(KeyCode.B))
             {
                 if (limit > 0)
                 {
@@ -59,7 +59,7 @@ public class PlayerScript : MonoBehaviour
                 
 
                 
-            }
+            }*/
         }
         Quaternion target = Quaternion.Euler(0, 0, tiltAroundZ);
         //ターゲットの回転に向かって減衰します
